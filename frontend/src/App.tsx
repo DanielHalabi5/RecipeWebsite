@@ -7,9 +7,8 @@ import { About } from './components/About';
 import { RecipeDetail } from './components/RecipeDetail';
 import { Footer } from './components/Footer';
 import { AllRecipes } from './components/AllRecipes';
-import { inject } from '@vercel/analytics';
- 
-inject();
+import { Analytics } from '@vercel/analytics/react';
+
 
 
 export default function App() {
@@ -32,20 +31,20 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-    const handleViewAllRecipes = () => {
+  const handleViewAllRecipes = () => {
     setCurrentView('all-recipes');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
 
   return (
-       <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       <Header onNavigateHome={handleBackToHome} />
-      
+
       {currentView === 'home' ? (
         <>
           <Hero />
-          <RecipeGrid 
+          <RecipeGrid
             onRecipeClick={handleRecipeClick}
             onViewAllRecipes={handleViewAllRecipes}
           />
@@ -58,8 +57,9 @@ export default function App() {
           <RecipeDetail recipe={selectedRecipe} onBack={handleBackToHome} />
         )
       )}
-      
+
       <Footer />
+      <Analytics />
     </div>
   );
 }
