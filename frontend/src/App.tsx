@@ -7,6 +7,9 @@ import { About } from './components/About';
 import { RecipeDetail } from './components/RecipeDetail';
 import { Footer } from './components/Footer';
 import { AllRecipes } from './components/AllRecipes';
+import { inject } from '@vercel/analytics';
+ 
+inject();
 
 
 export default function App() {
